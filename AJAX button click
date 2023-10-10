@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <title>This is a webpage to handle asynchronous requests using AJAX on Button Click</title>
+    <style>
+        /* CSS for styling */
+        #dataDisplay {
+            width: 300px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            display: none; /* Initially hidden */
+        }
+        #fetchButton {
+            padding: 10px;
+            background-color: #e74c3c;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>AJAX Button Click Example</h1>
+        <button id="fetchButton">Fetch Data</button>
+        <div id="dataDisplay">Click the button to fetch data.</div>
+    </div>
+
+    <script>
+        // Function to make an AJAX request
+        function fetchData() {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/1", true);
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    document.getElementById("dataDisplay").innerHTML = response.title;
+                } else {
+                    document.getElementById("dataDisplay").innerHTML = "Error loading data.";
+                }
+            };
+
+            xhr.send();
+        }
+
+        // Event listener for button click
+        document.getElementById("fetchButton").addEventListener("click", function() {
+            // Show the loading message
+            document.getElementById("dataDisplay").innerHTML = "Loading...";
+            document.getElementById("dataDisplay").style.display = "block";
+
+            // Fetch and display data
+            fetchData();
+        });
+    </script>
+</body>
+</html>
