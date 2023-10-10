@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title>WT Practical 6(a)</title>
+</head>
+<body>
+    <h1>XML file with Internal / External DTD and display it using CSS</h1>
+    <h1>Movie Catalog</h1>
+    <div id="xmlDisplay"></div>
+    <script>
+        // Load and display XML data using JavaScript
+        const xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                const xmlData = xhr.responseXML;
+                const xmlDisplay = document.getElementById("xmlDisplay");
+                // Loop through the XML data and display it with formatting
+                const movies = xmlData.getElementsByTagName("movie");
+                for (let i = 0; i < movies.length; i++) {
+                    const movie = movies[i];
+                    const movieDiv = document.createElement("div");
+                    movieDiv.className = "movies";
+                    const titleDiv = document.createElement("div");
+                    titleDiv.className = "title";
+                    titleDiv.textContent = "Title: " + movie.getElementsByTagName("title")[0].textContent;
+                    const directorDiv = document.createElement("div");
+                    directorDiv.className = "director";
+                    directorDiv.textContent = "Director: " + movie.getElementsByTagName("director")[0].textContent;
+                    const genreDiv = document.createElement("div");
+                    genreDiv.className = "genre";
+                    genreDiv.textContent = "Genre: " + movie.getElementsByTagName("genre")[0].textContent;
+                    const yearDiv = document.createElement("div");
+                    yearDiv.className = "year";
+                    yearDiv.textContent = "Year: " + movie.getElementsByTagName("year")[0].textContent;
+                    // Add a line break after displaying the year
+                    const lineBreak = document.createElement("br");
+                    movieDiv.appendChild(titleDiv);
+                    movieDiv.appendChild(directorDiv);
+                    movieDiv.appendChild(genreDiv);
+                    movieDiv.appendChild(yearDiv);
+                    movieDiv.appendChild(lineBreak);
+                    xmlDisplay.appendChild(movieDiv);
+                }
+            }
+        };
+        xhr.open("GET", "sample.xml", true);
+        xhr.send();
+    </script>
+</body>
+</html>
