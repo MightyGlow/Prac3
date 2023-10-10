@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <style>
+        #dataDisplay {
+            width: 300px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            display: none;
+        }
+
+        #mouseoverTarget {
+            padding: 20px;
+            background-color: #e74c3c;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>AJAX Mouseover</h1>
+        <div id="dataDisplay">Loading...</div>
+        <div id="mouseoverTarget">Mouseover Me</div>
+    </div>
+    <script>
+        function fetchData() {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://jsonplaceholder.typicode.com/posts/1", true);
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+                    document.getElementById("dataDisplay").innerHTML = response.title;
+                } else {
+                    document.getElementById("dataDisplay").innerHTML = "Error loading data.";
+                }
+            };
+
+            xhr.send();
+        }
+        document.getElementById("mouseoverTarget").addEventListener("mouseover", function() {
+            document.getElementById("dataDisplay").innerHTML = "Loading...";
+            document.getElementById("dataDisplay").style.display = "block";
+            fetchData();
+        });
+    </script>
+</body>
+</html>
