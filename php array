@@ -1,0 +1,42 @@
+<?php
+// Creating an indexed array
+$fruits = array("apple", "banana", "cherry");
+// Creating an associative array
+$person = array(
+    "first_name" => "John",
+    "last_name" => "Doe",
+    "age" => 30
+);	
+// Printing the arrays
+print_r($fruits);
+print_r($person);
+// Accessing array elements
+echo $fruits[0]; // Output: apple
+echo $person["first_name"]; // Output: John
+// Modifying array elements
+$fruits[1] = "kiwi"; // Changes "banana" to "kiwi"
+$fruits[] = "orange"; // Adds "orange" to the end of the array
+unset($fruits[2]); // Removes "cherry"
+print_r($fruits);
+
+
+// Iterating through an array
+for ($i = 0; $i < count($fruits); $i++) {
+    echo $fruits[$i] . " ";
+}
+foreach ($fruits as $fruit) {
+    echo $fruit . " ";
+}
+// Searching for an element in an array
+if (in_array("banana", $fruits)) {
+    echo "Found banana in the array!";
+} else {
+    echo "Banana not found.";
+}
+$index = array_search("cherry", $fruits);
+if ($index !== false) {
+    echo "Cherry found at index $index!";
+} else {
+    echo "Cherry not found.";
+}
+OUTPUT:
