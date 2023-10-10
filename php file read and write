@@ -1,0 +1,20 @@
+<?php
+// Reading from a File
+$filename = "example.txt"; 
+if (file_exists($filename)) {
+    $fileContent = file_get_contents($filename);
+    echo "File Content: " . $fileContent . "<br>";
+} else {
+    echo "File does not exist.<br>";
+}
+
+
+
+// Writing to a File
+$newContent = "This is new content."; 
+if (file_put_contents($filename, $newContent)) {
+    echo "File updated successfully.<br>";
+} else {
+    echo "Failed to update the file.<br>";
+}
+?>
