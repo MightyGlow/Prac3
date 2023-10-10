@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Data</title>
+</head>
+<body>
+    <h1>Form Data</h1>
+
+    <?php
+    // Check if the form was submitted using POST method
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Retrieve data from the POST array
+        $name = $_POST["name"];
+        $email = $_POST["email"];
+
+        // Display the retrieved data
+        echo "Name: " . $_POST["name"];. "<br>";
+        echo "Email: " . $_POST["email. "<br>";
+    }
+    ?>
+</body>
+</html>
+
