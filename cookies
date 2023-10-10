@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>WT Practical 5(c)</title>
+</head>
+<body>
+    <h1>JavaScript code for Storing <br>and Retrieving Cookies</h1>
+    <div>
+        <label for="cookieName">Cookie Name:</label>
+        <input type="text" id="cookieName">
+    </div>
+    <div>
+        <label for="cookieValue">Cookie Value:</label>
+        <input type="text" id="cookieValue">
+    </div>
+    <br>
+    <button onclick="setCookie()">Set Cookie</button>&nbsp;
+    <button onclick="getCookie()">Get Cookie</button>
+    <div id="cookieOutput"></div>
+    <script>
+        function setCookie() {
+            const cookieName = document.getElementById('cookieName').value;
+            const cookieValue = document.getElementById('cookieValue').value;
+
+            if (!cookieName || !cookieValue) {
+                alert("Please provide both cookie name and value.");
+                return;
+            }
+
+            const expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 7);
+            document.cookie = `${cookieName}=${cookieValue}; expires=${expirationDate.toUTCString()}`;
+            alert(`Cookie '${cookieName}' set successfully.`);
+        }
+        function getCookie() {
+            const cookieName = document.getElementById('cookieName').value;
+            const cookies = document.cookie.split(';');
+            let found = false;
+            for (const cookie of cookies) {
+                const [name, value] = cookie.trim().split('=');
+                if (name === cookieName) {
+                    document.getElementById('cookieOutput').textContent = `Cookie '${cookieName}' value: ${value}`;
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                document.getElementById('cookieOutput').textContent = `Cookie '${cookieName}' not found.`;
+            }
+        }
+    </script>
+</body>
+</html>
