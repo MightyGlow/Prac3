@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<movies>
+    <movie>
+        <title>The Dark Knight</title>
+        <director>Christopher Nolan</director>
+        <genre>Action</genre>
+        <year>2008</year>
+        <rating>9</rating>
+    </movie>
+    <movie>
+        <title>The Batman</title>
+        <director>Matt Reeves</director>
+        <genre>Action, Crime, Drama</genre>
+        <year>2022</year>
+        <rating>7.8</rating>
+    </movie>
+    <movie>
+        <title>The Gray Man</title>
+        <director>Russo Brothers</director>
+        <genre>Action</genre>
+        <year>2022</year>
+        <rating>6.5</rating>
+    </movie>
+    <movie>
+        <title>Extraction</title>
+        <director>Sam Hargrave</director>
+        <genre>Action</genre>
+        <year>2020</year>
+        <rating>6.8</rating>
+    </movie>
+</movies>
