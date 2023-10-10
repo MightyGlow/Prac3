@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WT Practical 4(a)</title>
+</head>
+<body>
+    <h1>Mathematical operations such as Calculating Factorial /<br>
+        Finding Fibonacci Series / <br>Displaying Prime Numbers in a Given Range /<br>
+        Evaluating Expressions /<br> Calculating reverse of a number using JavaScript</h1>
+    <div>
+        <label for="factorial">Factorial:</label>
+        <input type="number" id="factorial">
+        <button onclick="calculateFactorial()">Calculate</button>
+    </div>
+    <br>
+    <div>
+        <label for="fibonacci">Fibonacci(Upto):</label>
+        <input type="number" id="fibonacci">
+        <button onclick="calculateFibonacci()">Calculate</button>
+    </div>
+    <br>
+    <div>
+        <label for="prime">Prime Numbers(Upto):</label>
+        <input type="number" id="prime">
+        <button onclick="displayPrimes()">Calculate</button>
+    </div>
+    <br>
+    <div>
+        <label for="expression">Evaluate Expression:</label>
+        <input type="text" id="expression">
+        <button onclick="evaluateExpression()">Calculate</button>
+    </div>
+    <br>
+    <div>
+        <label for="reverse">Reverse Number:</label>
+        <input type="number" id="reverse">
+        <button onclick="calculateReverse()">Calculate</button>
+    </div>
+    <br>
+    <div id="output"></div>
+    <script>
+        function calculateFactorial() {
+            const number = parseInt(document.getElementById('factorial').value);
+            if (isNaN(number)) {
+                displayOutput("Please enter a valid number.");
+                return;
+            }
+            let factorial = 1;
+            for (let i = 2; i <= number; i++) {
+                factorial *= i;
+            }
+            displayOutput(`Factorial of ${number} is ${factorial}`);
+        }
+        function calculateFibonacci() {
+            const number = parseInt(document.getElementById('fibonacci').value);
+            if (isNaN(number)) {
+                displayOutput("Please enter a valid number.");
+                return;
+            }
+            const fibonacciSeries = [0, 1];
+            for (let i = 2; i <= number; i++) {
+                const nextNumber = fibonacciSeries[i - 1] + fibonacciSeries[i - 2];
+                fibonacciSeries.push(nextNumber);
+            }
+            displayOutput(`Fibonacci series up to ${number}: ${fibonacciSeries.join(', ')}`);
+        }
+        function isPrime(num) {
+            if (num <= 1) return false;
+            if (num <= 3) return true;
+            if (num % 2 === 0 || num % 3 === 0) return false;
+            for (let i = 5; i * i <= num; i += 6) {
+                if (num % i === 0 || num % (i + 2) === 0) return false;
+            }
+            return true;
+        }
+        function displayPrimes() {
+            const number = parseInt(document.getElementById('prime').value);
+            if (isNaN(number)) {
+                displayOutput("Please enter a valid number.");
+                return;
+            }
+            const primes = [];
+            for (let i = 2; i <= number; i++) {
+                if (isPrime(i)) {
+                    primes.push(i);
+                }
+            }
+            displayOutput(`Prime numbers up to ${number}: ${primes.join(', ')}`);
+        }
+        function evaluateExpression() {
+            var expression = document.getElementById('expression').value;
+            var result = eval(expression);
+            displayOutput(`Result of expression "${expression}" is ${result}`);
+        }
+        function calculateReverse() {
+            const number = parseInt(document.getElementById('reverse').value);
+            if (isNaN(number)) {
+                displayOutput("Please enter a valid number.");
+                return;
+            }
+            const reversedNumber = parseInt(number.toString().split('').reverse().join(''));
+            displayOutput(`Reverse of ${number} is ${reversedNumber}`);
+        }
+        function displayOutput(outputText) {
+            document.getElementById('output').textContent = outputText;
+        }
+    </script>
+</body>
+</html>
