@@ -1,0 +1,22 @@
+<?php
+// Starting a Session
+session_start();
+// Storing Data in a Session
+$_SESSION['username'] = 'JohnDoe';
+$_SESSION['user_id'] = 123;
+echo "Session data has been set.<br>";
+
+// Retrieving Data from a Session
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+    echo "Username: $username<br>";
+} else {
+    echo "Username not found in session.<br>";
+}	
+if (isset($_SESSION['user_id'])) {
+    $userId = $_SESSION['user_id'];
+    echo "User ID: $userId<br>";
+} else {
+    echo "User ID not found in session.<br>";
+}
+?>
