@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title>WT Practical 5(b)</title>
+</head>
+<body>
+    <h1>JavaScript code for Demonstrating different JavaScript <br> Objects such as Window, Navigator,History, Location, Document</h1>
+    <div>
+        <h2>Window Object</h2>
+        <p>Window Width: <span id="windowWidth"></span></p>
+        <p>Window Height: <span id="windowHeight"></span></p>
+    </div>
+    <div>
+        <h2>Navigator Object</h2>
+        <p>Browser Name: <span id="browserName"></span></p>
+        <p>Browser Version: <span id="browserVersion"></span></p>
+        <p>User Agent: <span id="userAgent"></span></p>
+    </div>
+    <div>
+        <h2>History Object</h2>
+        <p>History Length: <span id="historyLength"></span></p>
+    </div>
+    <div>
+        <h2>Location Object</h2>
+        <p>Current URL: <span id="currentURL"></span></p>
+        <p>Hostname: <span id="hostname"></span></p>
+        <p>Protocol: <span id="protocol"></span></p>
+    </div>
+    <div>
+        <h2>Document Object</h2>
+        <p>Page Title: <span id="pageTitle"></span></p>
+        <p>Heading Text: <span id="headingText"></span></p>
+    </div>
+    <script>
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        document.getElementById('windowWidth').textContent = windowWidth;
+        document.getElementById('windowHeight').textContent = windowHeight;
+
+        const browserName = navigator.appName;
+        const browserVersion = navigator.appVersion;
+        const userAgent = navigator.userAgent;
+        document.getElementById('browserName').textContent = browserName;
+        document.getElementById('browserVersion').textContent = browserVersion;
+        document.getElementById('userAgent').textContent = userAgent;
+
+        const historyLength = history.length;
+        document.getElementById('historyLength').textContent = historyLength;
+
+        const currentURL = location.href;
+        const hostname = location.hostname;
+        const protocol = location.protocol;
+        document.getElementById('currentURL').textContent = currentURL;
+        document.getElementById('hostname').textContent = hostname;
+        document.getElementById('protocol').textContent = protocol;
+
+        const pageTitle = document.title;
+        const headingText = document.querySelector('h1').textContent;
+        document.getElementById('pageTitle').textContent = pageTitle;
+        document.getElementById('headingText').textContent = headingText;
+    </script>
+</body>
+</html>
