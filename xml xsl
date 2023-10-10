@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>WT Practical 6(b)</title>
+</head>
+<body>
+    <h1>XML file with Internal / External DTD and display it using XSL</h1>
+    <hr>
+    <script>
+        // Load XML and XSL files and perform the transformation
+        const xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                const xml = this.responseXML;
+                const xsl = new XMLHttpRequest();
+                xsl.onreadystatechange = function () {
+                    if (this.readyState === 4 && this.status === 200) {
+                        const xsltProcessor = new XSLTProcessor();
+                        xsltProcessor.importStylesheet(this.responseXML);
+                        const resultDocument = xsltProcessor.transformToDocument(xml);
+                        document.body.appendChild(resultDocument.documentElement);
+                    }
+                };
+                xsl.open("GET", "superheroes.xsl", true);
+                xsl.send();
+            }
+        };
+        xhttp.open("GET", "superheroes.xml", true);
+        xhttp.send();
+    </script>
+</body>
+</html>
