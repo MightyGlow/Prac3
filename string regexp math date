@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>WT Practical 5(a)</title>
+</head>
+<body>
+    <h1>Demonstrating different JavaScript<br>Objects such as String, RegExp, Math, Date</h1>
+    <h2>String Object</h2>
+    <p id="stringDemo"></p><br>
+    <h2>RegExp Object</h2>
+    <p id="regexpDemo"></p><br>
+    <h2>Math Object</h2>
+    <p id="mathDemo"></p><br>
+    <h2>Date Object</h2>
+    <p id="dateDemo"></p><br>
+    <script>
+        const str = 'JavaScript is awesome!';
+        document.getElementById('stringDemo').innerHTML = `Original String: ${str}<br>
+        Length: ${str.length}<br>
+        Uppercase: ${str.toUpperCase()}<br>
+        Lowercase: ${str.toLowerCase()}<br>
+        Substring: ${str.substring(0, 10)}<br>
+        Index of 'is': ${str.indexOf('is')}<br>
+        Replace 'awesome' with 'fantastic': ${str.replace('awesome', 'fantastic')}`;
+
+        const pattern = /java(script)?/i;
+        const text = 'JavaScript is a scripting language.';
+        const matchResult = text.match(pattern);
+        document.getElementById('regexpDemo').innerHTML = `Text: ${text}<br>
+        RegExp Pattern: ${pattern}<br>
+        Match Result: ${matchResult}`;
+
+        const randomNum = Math.random();
+        const roundedNum = Math.round(randomNum * 100);
+        const sqrtNum = Math.sqrt(roundedNum);
+        document.getElementById('mathDemo').innerHTML = `Random Number: ${randomNum}<br>
+        Rounded Number: ${roundedNum}<br>
+        Square Root: ${sqrtNum}`;
+
+        const currentDate = new Date();
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth() + 1;
+        const day = currentDate.getDate();
+        document.getElementById('dateDemo').innerHTML = `Current Date: ${currentDate}<br>
+        Year: ${year}<br>
+        Month: ${month}<br>
+        Day: ${day}`;
+    </script>
+</body>
+</html>
+<!--https://jsonplaceholder.typicode.com/posts/1-->
